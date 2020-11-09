@@ -2,13 +2,10 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
+const body=Matter.body;
 const Constraint = Matter.Constraint;
 var roof;
 var slingshot, slingshot2, slingshot3, slingshot4,ball1,ball2,ball3,ball4;
-function preload()
-{
-	
-}
 
 function setup() {
 	createCanvas(800, 700);
@@ -16,20 +13,16 @@ function setup() {
 
 	engine = Engine.create();
 	world = engine.world;
+  ball1=new paper(100,width-90,10);
+	slingShot = new Rope(ball1.body,roof.body,-ball1diameter*2,0);
 
-	slingShot = new Slingshot(ball1,{x:200,y:100});
-	slingshot2 = new Slingshot(ball2,{x:200,y:100});
-	slingshot3 = new Slingshot(ball3,{x:200,y:100});
-	slingshot4 = new Slingshot(ball4,{x:200,y:100});
-	ball1=new paper(100,width-90,10);
-	ball2=new paper(150,width-90,10);
-	ball3=new paper(200,width-90,10);
-	ball4=new paper(250,width-90,10);
+	
+
 
 
 
 	
-roof= createSprite(400,350,50,50);
+roof=new Roof(400,350,50,50);
 	Engine.run(engine);
   
 }
